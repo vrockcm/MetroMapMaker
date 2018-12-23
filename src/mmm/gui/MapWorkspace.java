@@ -43,6 +43,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import jtps.jTPS;
 import mmm.data.DraggableImage;
 import mmm.data.DraggableLineEnd;
@@ -268,7 +269,8 @@ public class MapWorkspace extends AppWorkspaceComponent {
 	AddStationButton = gui.initChildButton(row1Box2, "Add Station", ADD_STATION_TO_LINE_TOOLTIP.toString(), false);
         RemoveStationButton = gui.initChildButton(row1Box2,"Remove Station", REMOVE_STATION_FROM_LINE_TOOLTIP.toString(), false);
         ListAllStationsButton = gui.initChildButton(row1Box2, LIST_ICON.toString(), LIST_TOOLTIP.toString(), false);
-        LineThicknessSlider = new Slider(1, 10, 1);     
+        LineThicknessSlider = new Slider(1, 10, 1);   
+        LineThicknessSlider.setDisable(true);
         
 	// ROW 2
 	row2 = new VBox();
@@ -283,11 +285,12 @@ public class MapWorkspace extends AppWorkspaceComponent {
         row2Box2.setSpacing(10);
         AddStationToCanvasButton = gui.initChildButton(row2Box2, PLUS_ICON.toString(), PLUS_STATION_TOOLTIP.toString(), false);
         RemoveStationFromCanvasButton = gui.initChildButton(row2Box2, MINUS_ICON.toString(), MINUS_STATION_TOOLTIP.toString(), false);
-        SnapButton = gui.initChildButton(row2Box2,"Snap", SNAP_TOOLTIP.toString(), false);
-        MoveLabelButton = gui.initChildButton(row2Box2,"Move Label", MOVE_LABEL_TOOLTIP.toString(), false);
-        RotateLabelButton = gui.initChildButton(row2Box2,ROTATE_ICON.toString(), ROTATE_TOOLTIP.toString(), false);
+        SnapButton = gui.initChildButton(row2Box2,"Snap", SNAP_TOOLTIP.toString(), true);
+        MoveLabelButton = gui.initChildButton(row2Box2,"Move Label", MOVE_LABEL_TOOLTIP.toString(), true);
+        RotateLabelButton = gui.initChildButton(row2Box2,ROTATE_ICON.toString(), ROTATE_TOOLTIP.toString(), true);
 
         StationRadiusSlider = new Slider(10,20,10);
+        StationRadiusSlider.setDisable(true);
         
 	// ROW 3
 	row3 = new HBox();
@@ -324,18 +327,19 @@ public class MapWorkspace extends AppWorkspaceComponent {
         HBox.setHgrow(region2, Priority.ALWAYS);
 	FontLabel = new Label("Font");
 	FontColorPicker = new ColorPicker(Color.valueOf(BLACK_HEX));
+        FontColorPicker.setDisable(true);
         row5Box1.getChildren().addAll( FontLabel,region2,FontColorPicker);
         row5Box2 = new HBox();
         row5Box2.setSpacing(10);
-        BoldButton=gui.initChildButton(row5Box2,BOLD_ICON.toString(),BOLD_TOOLTIP.toString(), false);
-        ItalicButton=gui.initChildButton(row5Box2,ITALIC_ICON.toString(),ITALIC_TOOLTIP.toString(), false);
+        BoldButton=gui.initChildButton(row5Box2,BOLD_ICON.toString(),BOLD_TOOLTIP.toString(), true);
+        ItalicButton=gui.initChildButton(row5Box2,ITALIC_ICON.toString(),ITALIC_TOOLTIP.toString(), true);
         FontSizeSelector = new ComboBox<>();
         FontSizeSelector.getItems().addAll(8.0,9.0,10.0,12.0,14.0,16.0,18.0,20.0,22.0,24.0,26.0,28.0,30.0,32.0,34.0,36.0,38.0,40.0,42.0,44.0);
         FontFamilySelector = new ComboBox<>(FXCollections.observableList(Font.getFamilies()));
-        FontFamilySelector.setDisable(false);
+        FontFamilySelector.setDisable(true);
         FontFamilySelector.getSelectionModel().select(2);
         FontSizeSelector.getSelectionModel().select(7);
-        FontSizeSelector.setDisable(false);        
+        FontSizeSelector.setDisable(true);        
 	row5Box2.getChildren().addAll(FontFamilySelector,FontSizeSelector);
 	
 	// ROW 6
@@ -345,6 +349,8 @@ public class MapWorkspace extends AppWorkspaceComponent {
         HBox.setHgrow(region3, Priority.ALWAYS);
 	NavigationLabel = new Label("Navigation");
 	GridCheckBox = new CheckBox("Show Grid");
+        GridCheckBox.setFont(Font.font("sansserif", FontWeight.BOLD, 15));
+        GridCheckBox.setStyle("-fx-text-fill: white;");
         row6Box1.getChildren().addAll(NavigationLabel,region3,GridCheckBox);
         row6Box2 = new HBox();
         row6Box2.setSpacing(10);
@@ -568,7 +574,14 @@ public class MapWorkspace extends AppWorkspaceComponent {
                                data.setCurrentLineThickness((int)((LineWrap)n).getStrokeWidth(),LineSelector.getSelectionModel().getSelectedItem());
                                MoveLabelButton.setDisable(true);
                                RotateLabelButton.setDisable(true);
+                               StationRadiusSlider.setDisable(false);
+                               LineThicknessSlider.setDisable(true);
                                SnapButton.setDisable(false);
+                               FontFamilySelector.setDisable(false);
+                               FontSizeSelector.setDisable(false);
+                               FontColorPicker.setDisable(false);
+                               BoldButton.setDisable(false);
+                               ItalicButton.setDisable(false);
                                FontColorPicker.setValue((Color)((DraggableLineEnd)node).Textlink.getFill());
                                FontFamilySelector.getSelectionModel().select(((DraggableLineEnd)node).Textlink.getFont().getFamily());
                                FontSizeSelector.getSelectionModel().select(((DraggableLineEnd)node).Textlink.getFont().getSize());
@@ -586,7 +599,9 @@ public class MapWorkspace extends AppWorkspaceComponent {
                 MoveLabelButton.setDisable(true);
                 RotateLabelButton.setDisable(true);
                 SnapButton.setDisable(true);
+                LineThicknessSlider.setDisable(false);
                 FontColorPicker.setDisable(true);
+                StationRadiusSlider.setDisable(true);
                 FontFamilySelector.setDisable(true);
                 FontSizeSelector.setDisable(true);
                 BoldButton.setDisable(true);
@@ -597,6 +612,8 @@ public class MapWorkspace extends AppWorkspaceComponent {
                 StationColorPicker.setValue((Color)((DraggableStation) node).getFill());
                 data.setcurrentStationRadius((int) ((DraggableStation) node).getRadius());
                 StationRadiusSlider.setValue(((DraggableStation) node).getRadius());
+                StationRadiusSlider.setDisable(false);
+                LineThicknessSlider.setDisable(true);
                 MoveLabelButton.setDisable(false);
                 RotateLabelButton.setDisable(false);
                 SnapButton.setDisable(false);
@@ -610,6 +627,8 @@ public class MapWorkspace extends AppWorkspaceComponent {
                 FontSizeSelector.getSelectionModel().select(((DraggableStation)node).text.getFont().getSize());
             }
             else if(node instanceof DraggableText){
+                StationRadiusSlider.setDisable(true);
+                LineThicknessSlider.setDisable(true);
                 MoveLabelButton.setDisable(true);
                 RotateLabelButton.setDisable(true);
                 SnapButton.setDisable(true);
@@ -631,8 +650,22 @@ public class MapWorkspace extends AppWorkspaceComponent {
                 FontSizeSelector.setDisable(true);
                 BoldButton.setDisable(true);
                 ItalicButton.setDisable(true);
+                StationRadiusSlider.setDisable(true);
+                LineThicknessSlider.setDisable(true);
             }
 	}
+        else{
+                MoveLabelButton.setDisable(true);
+                RotateLabelButton.setDisable(true);
+                SnapButton.setDisable(true);
+                FontColorPicker.setDisable(true);
+                FontFamilySelector.setDisable(true);
+                FontSizeSelector.setDisable(true);
+                BoldButton.setDisable(true);
+                ItalicButton.setDisable(true);
+                LineThicknessSlider.setDisable(true);
+                StationRadiusSlider.setDisable(true);
+        }
     }
 
     /**

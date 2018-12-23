@@ -669,6 +669,7 @@ public class MapData implements AppDataComponent {
 
     public Node selectTopNode(int x, int y) {
 	Node node = getTopNode(x, y);
+        MapWorkspace workspace = (MapWorkspace)app.getWorkspaceComponent();
         if (node != null && node instanceof Draggable) {
 	    ((Draggable)node).start(x, y);
 	}
@@ -679,10 +680,9 @@ public class MapData implements AppDataComponent {
 	    unhighlightShape(selectedNode);
 	}
 	if (node != null) {
-	    highlightShape(node);
-	    MapWorkspace workspace = (MapWorkspace)app.getWorkspaceComponent();
-	    workspace.loadSelectedNodeSettings(node);
+	    highlightShape(node);  
 	}
+        workspace.loadSelectedNodeSettings(node);
 	selectedNode = node;
         return node;
     }

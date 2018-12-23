@@ -13,11 +13,22 @@
         linear-gradient(from 0px 0px to 20px 0px, repeat, black 5%, transparent 5%), 
         linear-gradient(from 0px 0px to 0px 20px, repeat, black 5%, transparent 5%); 
 }*/
+
+.a{ 
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.a:hover { 
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
 .color-picker {
     -fx-padding: 2px;
 }
 .edit_toolbar{
-    -fx-background-color: #c9f2bf;
+    -fx-background-color: #363636 ;
     -fx-padding: 70.0 0 0 0;
     -fx-background-radius: 5.0;
     -fx-border-width: 1px;
@@ -27,12 +38,9 @@
 .edit_toolbar_row {
     -fx-padding: 0px;
     -fx-spacing: 10;
-    -fx-background-color: #c9f2bf;
-    -fx-background-radius: 5.0;
+    -fx-background-color: #363636;
     -fx-padding: 15;
     -fx-spacing: 10;
-    -fx-border-width: 1px;
-    -fx-border-color: #000000;
 }
 
 .color_chooser_pane {
@@ -41,27 +49,28 @@
 }
 
 .color_chooser_control {
+    -fx-text-fill: white;
     -fx-font-weight:bold;
     -fx-font-size:15;     
 }
 
 .bordered_pane {
-    -fx-background-color: #fff9cc;
+    -fx-background-color: #363636;
     -fx-background-radius: 5.0;
     -fx-padding: 15;
     -fx-spacing: 10;
     -fx-border-width: 2px;
-    -fx-border-color: #7777dd;
+    -fx-border-color: #000000;
 }
 .bordered_pane2{
-    -fx-background-color: #c1e9ff;
+    -fx-background-color: #363636;
     -fx-background-radius: 5.0;
     -fx-padding: 15;
     -fx-border-width: 1px;
     -fx-border-color: #000000;
 }
 .bordered_pane3{
-    -fx-background-color: #c1e9ff;
+    -fx-background-color: #363636;
     -fx-background-radius: 5.0;
     -fx-border-width: 1px;
     -fx-border-color: #000000;
@@ -69,11 +78,16 @@
 
 
 .file_button{
-   -fx-background-color: 
-        #c3c4c4,
-        linear-gradient(#d6d6d6 50%, white 100%),
-        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
-    -fx-background-radius: 30;
+    -fx-background-color: #ff4757;
+    -fx-background-radius: 10;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );   
+}
+
+.file_button:hover{
+    -fx-background-color: #ff6348;
+    -fx-background-radius: 10;
     -fx-background-insets: 0,1,1;
     -fx-text-fill: black;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );   

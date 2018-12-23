@@ -20,6 +20,8 @@ public class MapStyle {
     public static final String CLASS_COLOR_CHOOSER_PANE = "color_chooser_pane";
     public static final String CLASS_COLOR_CHOOSER_CONTROL = "color_chooser_control";
     public static final String CLASS_COMBOBOX_CONTROL = "combobox";
+    public static final String a = "a";
+    public static final String label = "label";
     public static final String CLASS_COMBOBOX_ROUTE_CONTROL = "combobox_route";
     public static final String EMPTY_TEXT = "";
     public static final int BUTTON_TAG_WIDTH = 75;

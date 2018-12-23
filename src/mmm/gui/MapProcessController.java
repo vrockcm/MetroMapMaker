@@ -767,7 +767,7 @@ public class MapProcessController {
        MapWorkspace workspace = (MapWorkspace)app.getWorkspaceComponent();
        if(workspace.GridCheckBox.isSelected()){
             BackgroundFill fill = new BackgroundFill(dataManager.getBackgroundColor(), null, null);
-            BackgroundImage image1=new BackgroundImage(new Image("file:/C:/Users/Vrockcm/Documents/NetBeansProjects/hw4/MetroMapMaker/images/G.png"),BackgroundRepeat.REPEAT,BackgroundRepeat.REPEAT,BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+            BackgroundImage image1=new BackgroundImage(new Image("file:../../images/G.png"),BackgroundRepeat.REPEAT,BackgroundRepeat.REPEAT,BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
             BackgroundFill[] fills=new BackgroundFill[1];
             fills[0]=fill;
             BackgroundImage[] images;
