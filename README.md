@@ -1,4 +1,4 @@
-<p align="center"><img width="150" src="https://github.com/vrockcm/MetroMapMaker/logo.png"></a></p>
+<p align="center"><img width="150" src="https://github.com/vrockcm/MetroMapMaker/blob/master/MetroMapMaker.jpg"></a></p>
 
 <h1 align="center">Metro Map Maker</h1>
 
@@ -21,5 +21,5 @@ This is my final project for CSE 219 built with JavaFX and all external librarie
 * Properties Framework - built to support adding different locales and storing local settings.
 
 ### Screenshots
-![Welcome dialog.](https://gyazo.com/1f1724c79b3e9bc63a6b8fecc2e80fbb "Welcome dialog")
-![Metro Map Maker with project opened.](https://gyazo.com/1cd31cd77d859cbb730b3cadca99f3ea "Metro Map Maker with map open")
+![Welcome dialog.](https://i.gyazo.com/1f1724c79b3e9bc63a6b8fecc2e80fbb.png "Welcome dialog")
+![Metro Map Maker with project opened.](https://i.gyazo.com/1cd31cd77d859cbb730b3cadca99f3ea.png "Metro Map Maker with map open")
